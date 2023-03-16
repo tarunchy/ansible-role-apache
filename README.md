@@ -58,7 +58,9 @@ The tests folder is used to store test cases for your role. Typically, you would
 To execute the test playbook, run the following command from the root of your role directory:
 
 ```
-ansible-playbook -i tests/inventory tests/test.yml --extra-vars "ansible_sudo_pass=your_password"
+ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+ansible-playbook -i tests/inventory tests/test.yml --check -K
+ansible-playbook -i tests/inventory tests/test.yml -K
 
 ```
 
