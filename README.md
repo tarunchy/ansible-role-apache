@@ -1,38 +1,46 @@
-Role Name
-=========
+# Ansible Role: Apache
 
-A brief description of the role goes here.
+This repository explains how to develop an Ansible role for Apache.
 
-Requirements
-------------
+## What are Ansible Roles?
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- Puppet -> Modules
+- Chef -> Cookbooks
+- Ansible -> Roles
 
-Role Variables
---------------
+Ansible roles are a collection of tasks, templates, and configurations needed to set up a specific application or service. In this case, we're working with an Apache role, which includes everything required to run Apache.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Components of an Apache Role:
 
-Dependencies
-------------
+1. **defaults**: Contains default variables for the role or application.
+2. **files**: Stores static files that will be copied to remote machines.
+3. **handlers**: Contains tasks triggered by specific actions (e.g., restarting the Apache service when the `httpd.conf` file changes).
+4. **meta**: Provides information about the role, such as the author, supported platforms, dependencies (if any), etc.
+5. **tasks**: Implements the core logic or code, such as installing packages and copying files.
+6. **templates**: Stores files similar to those in the `files` directory, but with support for dynamic content using the Jinja2 template language (`.j2` files).
+7. **vars**: Holds variables similar to those in the `defaults` directory, but with higher priority.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Creating a Role from the Command Line
 
-Example Playbook
-----------------
+To create a role using the command line, run the following command:
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```
+$ansible-galaxy init ansible-role-apache
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+$tree ansible-role-apache
+ansible-role-apache/
+├── README.md
+├── defaults/
+│   └── main.yml
+├── files/
+├── handlers/
+│   └── main.yml
+├── meta/
+│   └── main.yml
+├── tasks/
+│   └── main.yml
+├── templates/
+└── vars/
+    └── main.yml
 
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+```
