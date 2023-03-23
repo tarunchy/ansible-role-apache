@@ -1,6 +1,5 @@
 ---
-- hosts: dlyog02
+- hosts: localhost
+  remote_user: root
   roles:
-    - ansible-role-apache
-  tasks:
-    # Add any additional tasks required for testing
+    - ansible_role_apache

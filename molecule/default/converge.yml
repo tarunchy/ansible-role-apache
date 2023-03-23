@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include dlyog.ansible_role_apache"
+      include_role:
+        name: "dlyog.ansible_role_apache"
