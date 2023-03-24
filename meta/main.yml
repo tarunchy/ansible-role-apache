@@ -1,6 +1,7 @@
 galaxy_info:
-  author: your name
-  namespace: dlyog
+  author: cs
+  role_name: ansible_role_apache
+  namespace: cs
   description: your role description
   company: your company (optional)
 

@@ -4,22 +4,26 @@
   become: true
 
   tasks:
-    - name: Install httpd and httpd-tools packages
+    # Install httpd package
+    - name: Install Apache
       yum:
-        name:
-          - httpd
-          - httpd-tools
+        name: httpd
         state: latest
 
+    # Load mpm_prefork module
     - name: Load mpm_prefork module
       lineinfile:
         path: /etc/httpd/conf.modules.d/00-mpm.conf
         regexp: '^#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so'
         line: 'LoadModule mpm_prefork_module modules/mod_mpm_prefork.so'
 
-    - name: Enable and start httpd service
+    # Restart Apache
+    - name: Restart Apache
       service:
         name: httpd
-        state: started
-        enabled: yes
+        state: restarted
+
+    # Check Apache error log
+    - name: Check Apache error log
+      shell: tail -n 10 /var/log/httpd/error_log
 

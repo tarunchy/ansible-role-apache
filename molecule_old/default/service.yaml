@@ -1,0 +1,6 @@
+- name: Ensure httpd service is running and enabled
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: yes
+
